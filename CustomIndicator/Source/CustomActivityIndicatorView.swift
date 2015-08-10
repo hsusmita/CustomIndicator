@@ -12,12 +12,18 @@ import UIKit
 
   var hidesWhenStopped: Bool
   var isAnimating: Bool
-  
   private var animationLayer: CALayer
   
-  convenience init(indicatorImage:UIImage,frame:CGRect) {
+  @IBInspectable var indicatorImage:UIImage? {
+    didSet {
+      configureAnimationLayer(indicatorImage!)
+    }
+  }
+  
+  convenience init(image:UIImage,frame:CGRect) {
     self.init(frame:frame)
-    configureAnimationLayer(indicatorImage)
+    indicatorImage = image
+    configureAnimationLayer(image)
   }
   
   required init(coder aDecoder: NSCoder) {
@@ -55,7 +61,7 @@ import UIKit
   }
   
   private func configureAnimationLayer(indicatorImage:UIImage) {
-    animationLayer.frame =  CGRectMake(0,0,indicatorImage.size.width,indicatorImage.size.height)
+    animationLayer.frame = CGRectMake(0,0,frame.size.width,frame.size.height)
     animationLayer.contents = indicatorImage.CGImage
     animationLayer.masksToBounds = true
     layer.addSublayer(animationLayer)
@@ -68,7 +74,7 @@ import UIKit
     rotation.repeatCount = Float.infinity
     rotation.fillMode = kCAFillModeForwards;
     rotation.fromValue = 0.0
-    rotation.toValue = 3.14*2;
+    rotation.toValue = M_PI * 2;
     return rotation
   }
   

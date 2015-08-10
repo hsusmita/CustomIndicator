@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1h-SM-dwJ">
-                                <rect key="frame" x="284" y="385" width="33" height="30"/>
+                                <rect key="frame" x="284" y="470" width="33" height="30"/>
                                 <state key="normal" title="Start">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,17 +25,41 @@
                                     <action selector="toggleAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tav-J2-DDF"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LD1-Pg-yyr" customClass="CustomActivityIndicatorView" customModule="CustomIndicator" customModuleProvider="target">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="XYj-We-nLJ"/>
+                                    <constraint firstAttribute="height" constant="100" id="m0N-ev-c8m"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="indicatorImage" value="swirl"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="Y1h-SM-dwJ" secondAttribute="centerY" constant="-100" id="ACz-8U-OrD"/>
+                            <constraint firstAttribute="centerY" secondItem="Y1h-SM-dwJ" secondAttribute="centerY" constant="-150" id="ACz-8U-OrD"/>
+                            <constraint firstAttribute="centerY" secondItem="LD1-Pg-yyr" secondAttribute="centerY" id="FVS-G0-5kk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Y1h-SM-dwJ" secondAttribute="bottom" constant="100" id="Zbl-sJ-k9Q"/>
+                            <constraint firstAttribute="centerX" secondItem="LD1-Pg-yyr" secondAttribute="centerX" id="b8o-eJ-rsV"/>
                             <constraint firstAttribute="centerX" secondItem="Y1h-SM-dwJ" secondAttribute="centerX" id="itP-QK-QQa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ACz-8U-OrD"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="loaderView" destination="LD1-Pg-yyr" id="kXK-CG-XWH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="183" y="395"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="swirl" width="184" height="184"/>
+    </resources>
 </document>

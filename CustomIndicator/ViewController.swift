@@ -10,14 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
   
- var indicatorView: CustomActivityIndicatorView?
+  var indicatorView: CustomActivityIndicatorView?
+  
+  @IBOutlet weak var loaderView: CustomActivityIndicatorView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let image = UIImage(named: "swirl")
-    indicatorView = CustomActivityIndicatorView(indicatorImage: image!, frame: CGRectMake(CGRectGetWidth(self.view.frame)/2 - 50 , CGRectGetHeight(self.view.frame)/50, 100, 100))
-    self.view.addSubview(indicatorView!)
-    // Do any additional setup after loading the view, typically from a nib.
+//    let image = UIImage(named: "swirl")
+//    indicatorView = CustomActivityIndicatorView(image: image!, frame: CGRectMake(CGRectGetWidth(self.view.frame)/2 - 50 , CGRectGetHeight(self.view.frame)/2-50, 100, 100))
+//    self.view.addSubview(indicatorView!)
   }
 
   override func didReceiveMemoryWarning() {
@@ -26,11 +27,11 @@ class ViewController: UIViewController {
   }
 
   @IBAction func toggleAnimation(sender: UIButton) {
-    if (!indicatorView!.isAnimating) {
-      indicatorView!.startAnimating()
+    if (!loaderView!.isAnimating) {
+      loaderView!.startAnimating()
       sender.setTitle("Stop", forState: UIControlState.Normal)
     }else {
-      indicatorView!.stopAnimating()
+      loaderView!.stopAnimating()
       sender.setTitle("Start", forState: UIControlState.Normal)
     }
   }
